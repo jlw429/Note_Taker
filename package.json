@@ -1,0 +1,24 @@
+{
+  "name": "Note_TakerHW11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlw429/Note_TakerHW11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlw429/Note_TakerHW11/issues"
+  },
+  "homepage": "https://github.com/jlw429/Note_TakerHW11#readme"
+}
