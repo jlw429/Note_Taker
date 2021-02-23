@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const arrayDB = './public/db/db.json';
+const { v4: uuidv4 } = require('uuid');
 
 // Express App and PORT
 const app = express();
@@ -44,7 +45,7 @@ app.post('/api/notes', async (req, res) => {
     const notes = JSON.parse(data);
 
     const newNote = req.body;
-    const newNoteId = notes.length + 1;
+    const newNoteId = uuidv4();
     const noteData = {
       id: newNoteId,
       title: newNote.title,
@@ -56,7 +57,7 @@ app.post('/api/notes', async (req, res) => {
     console.log(noteData);
 
     await writeFileAsync(arrayDB, JSON.stringify(notes, null, 2));
-    console.log('note created!');
+    console.log('note created.');
   } catch (err) {
     throw err;
   }
