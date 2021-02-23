@@ -1,4 +1,4 @@
-const jsonDB = require('../routes/db.json');
+const jsonDB = require('./db.json');
 const fs = require('fs');
 const util = require('util');
 
@@ -8,7 +8,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 module.exports = (app) => {
   app.get('/api/notes', function (req, res) {
-    readFileAsync('../routes/db.json', 'utf8').then(function (data) {
+    readFileAsync('./db.json', 'utf8').then(function (data) {
       notes = [].concat(JSON.parse(data));
       res.json(notes);
     });
@@ -16,7 +16,7 @@ module.exports = (app) => {
 
   app.post('/api/notes', function (req, res) {
     const note = req.body;
-    readFileAsync('../routes/db.json', 'utf8')
+    readFileAsync('./db.json', 'utf8')
       .then(function (data) {
         const notes = [].concat(JSON.parse(data));
         note.id = notes.length + 1;
@@ -24,13 +24,13 @@ module.exports = (app) => {
         return notes;
       })
       .then(function (notes) {
-        writeFileAsync('../routes/db.json', JSON.stringify(notes));
+        writeFileAsync('./db.json', JSON.stringify(notes));
         res.json(note);
       });
   });
   app.delete('/api/notes/:id', function (req, res) {
     const idToDelete = parseInt(req.params.id);
-    readFileAsync('../routes/db.json', 'utf8')
+    readFileAsync('./db.json', 'utf8')
       .then(function (data) {
         const notes = [].concat(JSON.parse(data));
         const newNotesData = [];
@@ -42,7 +42,7 @@ module.exports = (app) => {
         return newNotesData;
       })
       .then(function (notes) {
-        writeFileAsync('../routes/db.json', JSON.stringify(notes));
+        writeFileAsync('./db.json', JSON.stringify(notes));
         res.send('saved success!!!');
       });
   });
