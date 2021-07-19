@@ -1,4 +1,4 @@
-# Note_Taker HW11
+# Note_Taker
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg 'License Badge')
 
